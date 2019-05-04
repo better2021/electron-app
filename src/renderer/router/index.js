@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/components/LandingPage').default,
     },
     {
+      path: '/music',
+      name: 'music',
+      component: require('@/views/Music').default,
+    },
+    {
       path: '*',
       redirect: '/',
     },
