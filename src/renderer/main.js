@@ -9,6 +9,9 @@ if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
 Vue.http = Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
+// 默认8秒后超时
+axios.defaults.timeout = 8000;
+
 /* eslint-disable no-new */
 new Vue({
   components: { App },

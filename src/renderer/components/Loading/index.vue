@@ -22,7 +22,7 @@ export default {
 .loadingBox {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 40px;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);

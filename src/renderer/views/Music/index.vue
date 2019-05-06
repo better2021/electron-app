@@ -42,6 +42,7 @@
 <script>
 import { VueLoading } from 'vue-loading-template';
 import Loading from '@/components/Loading';
+import Message from '@/libs/index.js';
 
 export default {
   components: {
@@ -67,7 +68,12 @@ export default {
     };
   },
   mounted() {
+    console.log(Message);
     this.getMusicList();
+    const alertOnlineStatus = () => {
+      Message('亲，已经断网了哦', 3000);
+    };
+    window.addEventListener('offline', alertOnlineStatus);
   },
   methods: {
     async getMusicList(name = '心如止水') {
@@ -77,7 +83,6 @@ export default {
         method: 'GET',
         params: { name },
       });
-      // console.log(res);
       this.isShow = false;
       if (res.status !== 200) {
         try {
