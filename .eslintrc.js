@@ -26,5 +26,6 @@ module.exports = {
     'linebreak-style': ['off', 'windows'],
     'no-console': 'off',
     'no-alert': 0,
+    'no-underscore-dangle': 'off',
   },
 };
