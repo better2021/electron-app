@@ -32,7 +32,7 @@
         </li>
       </ul>
       <div class="audioBox">
-        <audio :src="musicUrl" autoplay controls></audio>
+        <audio :src="musicUrl" autoplay controls loop></audio>
       </div>
     </div>
     <Loading v-show="isShow"></Loading>
@@ -70,10 +70,14 @@ export default {
   mounted() {
     console.log(Message);
     this.getMusicList();
-    const alertOnlineStatus = () => {
+    const alertOfflineStatus = () => {
       Message('亲，已经断网了哦', 3000);
     };
-    window.addEventListener('offline', alertOnlineStatus);
+    const alertOnlineStatus = () => {
+      Message('网络已连接', 3000);
+    };
+    window.addEventListener('offline', alertOfflineStatus);
+    window.addEventListener('online', alertOnlineStatus);
   },
   methods: {
     async getMusicList(name = '心如止水') {
