@@ -42,7 +42,6 @@
 <script>
 import { VueLoading } from 'vue-loading-template';
 import Loading from '@/components/Loading';
-import Message from '@/libs/index.js';
 
 export default {
   components: {
@@ -68,13 +67,13 @@ export default {
     };
   },
   mounted() {
-    console.log(Message);
+    // console.log(this.$Message);
     this.getMusicList();
     const alertOfflineStatus = () => {
-      Message('亲，已经断网了哦', 3000);
+      this.$Message('亲，已经断网了哦', 3000);
     };
     const alertOnlineStatus = () => {
-      Message('网络已连接', 3000);
+      this.$Message('网络已连接', 3000);
     };
     window.addEventListener('offline', alertOfflineStatus);
     window.addEventListener('online', alertOnlineStatus);
