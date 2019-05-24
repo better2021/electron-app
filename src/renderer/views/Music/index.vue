@@ -100,6 +100,7 @@ export default {
     },
     // 获取单歌曲的url地址
     async getUrl(id) {
+      this.$insProgress.start();
       const res = await this.$axios({
         url: 'https://api.imjad.cn/cloudmusic',
         method: 'GET',
@@ -109,6 +110,7 @@ export default {
           id,
         },
       });
+      this.$insProgress.finish();
       console.log(res);
       if (res.status !== 200) {
         try {
@@ -149,97 +151,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#music {
-  background: hsl(54, 76%, 95%);
-  .searchBox {
-    padding: 0 20px;
-    text-align: center;
-    .search {
-      padding: 10px 0;
-      input {
-        width: 200px;
-        height: 36px;
-        line-height: 36px;
-        text-indent: 5px;
-        border-radius: 3px;
-      }
-      button {
-        width: 60px;
-        height: 36px;
-        border-radius: 3px;
-        background: #2089a5;
-        color: #ffffff;
-        font-size: 14px;
-      }
-    }
-    .hotBox {
-      margin: 10px auto;
-      span {
-        font-size: 12px;
-        display: inline-block;
-        padding: 2px 5px;
-        margin: 0 5px;
-        border-radius: 3px;
-        cursor: pointer;
-        color: #ffffff;
-        background: #2089a5;
-      }
-    }
-  }
-  .musicList {
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      li {
-        width: 24vw;
-        box-sizing: border-box;
-        .pic {
-          position: relative;
-          margin: 10px;
-          width: 24vw;
-          height: 24vw;
-          border-radius: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-          img {
-            width: 100%;
-          }
-          .loading {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        }
-        .active {
-          img {
-            animation: goMove 8s linear infinite;
-            filter: blur(6px);
-          }
-        }
-        p {
-          span {
-            font-size: 12px;
-          }
-        }
-      }
-    }
-    .audioBox {
-      margin: 10px 0;
-      text-align: center;
-    }
-  }
-}
-
-@keyframes goMove {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+@import "./index.scss"; // scss的引入不用（）和less的有点不同
 </style>
